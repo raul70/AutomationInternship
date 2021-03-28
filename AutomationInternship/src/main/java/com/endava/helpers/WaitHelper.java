@@ -33,4 +33,5 @@ public enum WaitHelper {
 	public void waitForElementToBeClickable(WebElement element, int timeout) {
 		waitForElement(ExpectedConditions.elementToBeClickable(element), timeout);
 	}
+
 }
