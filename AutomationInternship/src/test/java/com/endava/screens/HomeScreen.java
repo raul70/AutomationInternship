@@ -12,7 +12,6 @@ public class HomeScreen {
 	// elements
 	private static final By signInButton = By.className("login");
 	private static final By imageContainer = By.id("homeslider");
-	private static final By contactButton = By.linkText("Contact us");
 
 	public HomeScreen() {
 		waitHelper.waitForElementVisibility(imageContainer, 30);
@@ -21,10 +20,5 @@ public class HomeScreen {
 	public RegistrationScreen initiateRegistration() {
 		actionsHelper.clickOn(signInButton);
 		return new RegistrationScreen();
-	}
-
-	public ContactUsScreen clickContactUs() {
-		actionsHelper.clickOn(contactButton);
-		return new ContactUsScreen();
 	}
 }
