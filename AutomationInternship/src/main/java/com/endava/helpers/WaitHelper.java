@@ -33,4 +33,13 @@ public enum WaitHelper {
 	public void waitForElementToBeClickable(WebElement element, int timeout) {
 		waitForElement(ExpectedConditions.elementToBeClickable(element), timeout);
 	}
+
+	public void waitFor(int intervalMs){
+		try{
+			Thread.sleep(intervalMs);
+		}
+		catch (InterruptedException e){
+			Thread.interrupted();
+		}
+	}
 }
