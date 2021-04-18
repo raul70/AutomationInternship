@@ -34,6 +34,13 @@ public class RegistrationPersonalInformationScreen {
     public static final By firstNameAddress = By.xpath("//input[@id='firstname']");
     public static final By lastNameAddress = By.xpath("//input[@id='lastname']");
     public static final By company = By.id("company");
+    public static final By address = By.id("address1");
+    public static final By city = By.id("city");
+    public static final By state = By.id("id_state");
+    public static final By phone = By.id("phone_mobile");
+    public static final By aliasAddress = By.id("alias");
+    public static final By submitButton = By.id("submitAccount");
+    public static final By zipCode = By.id("postcode");
 
 
 
@@ -91,19 +98,19 @@ public class RegistrationPersonalInformationScreen {
     }
 
     public void chooseDay(String dayValue) {
-        Select drpDays = new Select(actionsHelper.findElement(day));
+        Select drpDays = new Select(DriverHelper.getDriver().findElement(day));
         drpDays.selectByValue(dayValue);
         waitHelper.waitFor(2000);
     }
 
     public void chooseMonth(String monthValue) {
-        Select drpMonth = new Select(actionsHelper.findElement(month));
+        Select drpMonth = new Select(DriverHelper.getDriver().findElement(month));
         drpMonth.selectByValue(monthValue);
         waitHelper.waitFor(2000);
     }
 
     public void chooseYear(String yearValue) {
-        Select drpYear = new Select(actionsHelper.findElement(year));
+        Select drpYear = new Select(DriverHelper.getDriver().findElement(year));
         drpYear.selectByValue(yearValue);
         waitHelper.waitFor(2000);
     }
@@ -166,7 +173,40 @@ public class RegistrationPersonalInformationScreen {
         Assert.assertEquals(companyText, actionsHelper.getElementAttribute(company, "value"));
         waitHelper.waitFor(2000);
     }
+    public RegistrationPersonalInformationScreen enterAddress(String addressText){
+        actionsHelper.sendTextToField(address, addressText);
+        return this;
+    }
+    public RegistrationPersonalInformationScreen enterCity(String cityText){
+        actionsHelper.sendTextToField(city, cityText);
+        return this;
+    }
 
+    public void chooseState(String stateValue) {
+        Select drpState = new Select(DriverHelper.getDriver().findElement(state));
+        drpState.selectByValue(stateValue);
+        waitHelper.waitFor(2000);
+    }
+
+    public RegistrationPersonalInformationScreen enterPhoneNumber(String phoneNumber){
+        actionsHelper.sendTextToField(phone, phoneNumber);
+        return this;
+    }
+
+    public RegistrationPersonalInformationScreen enterAlisAddress(String alias){
+        actionsHelper.sendTextToField(aliasAddress, alias);
+        return this;
+    }
+
+   public MyAccountScreen submitWithSuccess(){
+        actionsHelper.clickOn(submitButton);
+        return new MyAccountScreen();
+   }
+
+    public RegistrationPersonalInformationScreen enterZipCode(String zipCodeText) {
+        actionsHelper.sendTextToField(zipCode, zipCodeText);
+        return this;
+    }
 }
 
 

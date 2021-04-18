@@ -2,6 +2,7 @@ package com.endava.helpers;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
 public enum ActionsHelper {
@@ -12,34 +13,39 @@ public enum ActionsHelper {
 	public void clickOn(By element) {
 		waitHelper.waitForElementVisibility(element, 30);
 		waitHelper.waitForElementToBeClickable(element, 30);
-		findElement(element).click();
+		getDriver().findElement(element).click();
 	}
 
 	public void sendTextToField(By element, String text){
 		waitHelper.waitForElementVisibility(element, 30);
-		findElement(element).sendKeys(text);
+		clearText(element);
+        getDriver().findElement(element).sendKeys(text);
 
 	}
 
 	public String readTextFromField(By element){
 		waitHelper.waitForElementVisibility(element, 30);
-		return findElement(element).getText();
+		return getDriver().findElement(element).getText();
 
 	}
 
 	public String getElementAttribute(By element, String attribute){
 		waitHelper.waitForElementVisibility(element, 30);
-		return findElement(element).getAttribute(attribute);
+		return getDriver().findElement(element).getAttribute(attribute);
 	}
 
-	public WebElement findElement(By element){
-		return DriverHelper.getDriver().findElement(element);
+	private WebDriver getDriver(){
+		return DriverHelper.getDriver();
 	}
+
 
 	public static void scroll(){
 		JavascriptExecutor js = (JavascriptExecutor) DriverHelper.getDriver();
 		js.executeScript("window.scrollBy(0,1000)");
 	}
 
+	public static void clearText(By element){
+		DriverHelper.getDriver().findElement(element).clear();
+	}
 
 }

@@ -27,3 +27,5 @@ AutomationInternship/.settings/
 AutomationInternship/target/
 AutomationInternship/test-output/
 .idea/
+AutomationInternship/src/main/main.iml
+AutomationInternship/src/test/test.iml
