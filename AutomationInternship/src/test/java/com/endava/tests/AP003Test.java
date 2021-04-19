@@ -3,13 +3,12 @@ package com.endava.tests;
 import com.endava.helpers.ActionsHelper;
 import com.endava.models.Gender;
 import com.endava.screens.HomeScreen;
-import com.endava.screens.MyAccountScreen;
 import com.endava.screens.RegistrationPersonalInformationScreen;
 import com.endava.screens.RegistrationScreen;
 import org.testng.annotations.Test;
 
 public class AP003Test extends BaseTest {
-    String emailAddress = "m_elena@yahoo.com";
+    String emailAddress = "m_elena26@yahoo.com";
     String firstName = "Elena";
     String lastName = "Bizau";
     String password = "pa1225525s";
@@ -18,13 +17,6 @@ public class AP003Test extends BaseTest {
     String month = "3";
     String year = "1997";
     String company = "Co0";
-    String address ="address";
-    String city ="city";
-    String state = "3";
-    String phone = "01745698568";
-    String alias = "asd";
-    String message = "Welcome to your account. Here you can manage all of your personal information and orders.";
-    String zipCode= "80000";
     @Test
 
     public void openAutomationPracticeWebsite() {
@@ -32,10 +24,10 @@ public class AP003Test extends BaseTest {
         HomeScreen homeScreen = new HomeScreen();
         RegistrationScreen registrationScreen = homeScreen.initiateRegistration();
         registrationScreen.enterEmailAddress(emailAddress);
+        registrationScreen.initiateCreateAccount();
         RegistrationPersonalInformationScreen registrationPersonalInformationScreen = registrationScreen.initiateCreateAccount();
         registrationPersonalInformationScreen.verifyEmailAddress(emailAddress);
         ActionsHelper.scroll();
-
 //        registrationPersonalInformationScreen.completeForm();
         registrationPersonalInformationScreen.chooseGender(gender);
         registrationPersonalInformationScreen.verifyGender(gender);
@@ -57,14 +49,6 @@ public class AP003Test extends BaseTest {
         registrationPersonalInformationScreen.verifyLastNameFromAddress();
         registrationPersonalInformationScreen.enterCompany(company);
         registrationPersonalInformationScreen.verifyCompanyText(company);
-        registrationPersonalInformationScreen.enterAddress(address);
-        registrationPersonalInformationScreen.enterCity(city);
-        registrationPersonalInformationScreen.chooseState(state);
-        registrationPersonalInformationScreen.enterZipCode(zipCode);
-        registrationPersonalInformationScreen.enterPhoneNumber(phone);
-        registrationPersonalInformationScreen.enterAlisAddress(alias);
-        MyAccountScreen myAccountScreen = registrationPersonalInformationScreen.submitWithSuccess();
-        myAccountScreen.verifyAccountMessage(message);
 
     }
 }

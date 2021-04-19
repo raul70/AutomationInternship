@@ -5,12 +5,11 @@ import org.openqa.selenium.By;
 
 import com.endava.helpers.WaitHelper;
 
-public class RegistrationScreen {
+public class RegistrationScreen extends BaseScreen{
 
-	WaitHelper waitHelper = WaitHelper.INSTANCE;
 	private static final By createAccount = By.id("SubmitCreate");
 	private static final By emailAddress = By.id("email_create");
-	ActionsHelper actionsHelper = ActionsHelper.INSTANCE;
+
 
 	public RegistrationScreen verifyCreateAccountButtonIsPresent() {
 		waitHelper.waitForElementVisibility(createAccount, 30);

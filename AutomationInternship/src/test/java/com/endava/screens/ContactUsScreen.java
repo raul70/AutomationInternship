@@ -5,10 +5,8 @@ import org.openqa.selenium.By;
 import com.endava.helpers.ActionsHelper;
 import com.endava.helpers.WaitHelper;
 
-public class ContactUsScreen {
+public class ContactUsScreen extends BaseScreen{
 
-	private ActionsHelper actionsHelper = ActionsHelper.INSTANCE;
-	private WaitHelper waitHelper = WaitHelper.INSTANCE;
 	// elements
 	private static final By submitButton = By.id("submitMessage");
 	private static final By validationError = By.className("alert-danger");
